@@ -5,7 +5,7 @@ const TwitterRouter = require('./src/routes/twitteranalysis');
 const app = express();
 app.use(express.urlencoded({extended: true}));
 
-const port = 3000;
+const port = 3002;
 
 //Static Files
 app.use(express.static('public'));

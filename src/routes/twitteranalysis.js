@@ -50,7 +50,7 @@ async function TweetAnalysis(search)
     let response2;
         const params = {
                  'query': search.trim(),
-                  'max_results': 100,
+                  'max_results': 5,
                   'tweet.fields': 'lang'
                 }
         response2 = await needle('get', endpointUrl, params, {
@@ -64,7 +64,7 @@ async function TweetAnalysis(search)
 
                         
             let json2= await response2.body;
-            console.log("in here 2")
+         //   console.log("in here 2")
             //console.log(json2.data)
             //MAking key
             
@@ -92,7 +92,7 @@ function Analyser(results) {
                 if(results.tweets[i].lang = "en")
                 {
                         //analysis of tweets
-                        console.log("in here 3")
+                     //   console.log("in here 3")
                       
                         const  tweet = results.tweets[i].text;
                        
@@ -113,7 +113,7 @@ function Analyser(results) {
                         const { SentimentAnalyzer, PorterStemmer } = natural;
                         const analyzeSentiment = new SentimentAnalyzer('English', PorterStemmer, 'afinn');
                         const analysis = analyzeSentiment.getSentiment(filteredTweet);
-                        console.log(analysis)
+                     //   console.log(analysis)
 
                         //storing analysis in array for plot
                         plotAnalysisData.push({x: 0, y: analysis})
@@ -194,8 +194,8 @@ router.post('/', async(req, res) => {
                       if(results != null || results != undefined){
             
                         //Storing results in redis cache and s3 bucket
-                        console.log("In call");
-                        console.log(results)
+                     //   console.log("In call");
+                     //   console.log(results)
                         //redis
                         redisClient.setex(redisKey, 3600, JSON.stringify(results) );
             
