@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Twitter Sentiment Analysis</title>
+        <link rel="stylesheet" href="/css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="form">
+            <form  action ="/" method = "POST">
+                <input type="text"   name="search" placeholder="Search for Topics" required>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        </header>
+       
+        <div class="wrapper"> 
+            <div class= "newssearch">
+                <%if (tweets != null ) { %>
+                    <h1> Tweet Analysis for <%- searchParam %> </h1> 
+                
+                   
+                         
+                           <p id="yy" style="display:none"><%- analysis %></p>
+                    
+
+                    <div>
+                        <h2>Ploting Sentiments </h2>
+                        <%if (analysis != "No search results found." ) { %>
+                             <canvas id="popChart" width="600" height="400"></canvas>
+                             <% }
+                             else  { %>
+                                <p> No Search results found. </p>
+                             <% }  %>
+                    </div>
+
+                    <div > 
+                        <h3   >Overall Sentiment: <%- avgemotion %> </h3>
+
+                        <%if (avgemotion == "Positive" ) { %>
+                            <img class="center" src="/img/positiveemo.gif">
+                        <% }
+                        else if (avgemotion == "Negative" ) { %>
+                            <img class="center" src="/img/negativeemo.gif">
+                        <% }
+                        else if (avgemotion == "Neutral" ) { %>
+                            <img class="center" src="/img/neutral.gif">
+
+                            <% }
+                            else { %>
+                                <p> No Search results found. </p>
+                        <% } %>
+
+                    </div>
+                      
+                   
+                 <% }
+                 else { %>
+
+                    <p style="align-items: center;text-align: center; font-size: large;">Search a Topic or #  </p>
+                 <% } %>
+          
+         </div>
+        </div>
+    
+    <script>
+        var x = document.getElementById("yy").innerText;
+        //console.log("in ejs");
+        //console.log(JSON.parse(x));
+        if(x != "No search results found.")
+        {
+                var xy =JSON.parse(x);
+
+                new Chart("popChart", {
+                type: "scatter",
+                data: {
+                    datasets: [{
+                    pointRadius: 6,
+                    pointBackgroundColor: "rgb(0,0,255)",
+                    data: xy
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    scales: {
+                    xAxes: [{ticks: {min: -2, max:2}}],
+                    yAxes: [{ticks: {min: -2, max:2}}],
+                    }
+                }
+                });
+        }
+      
+    
+    </script>
+</body>
+</html>

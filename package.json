@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "apos-to-lex-form": "^1.0.5",
+    "aws": "^0.0.3-2",
+    "aws-sdk": "^2.1018.0",
+    "axios": "^0.21.4",
+    "chartjs": "^0.3.24",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "morgan": "~1.9.1",
+    "natural": "^5.1.1",
+    "needle": "^3.0.0",
+    "oauth-1.0a": "^2.2.6",
+    "redis": "^3.1.2",
+    "spelling-corrector": "^3.0.0",
+    "stopword": "^1.0.11",
+    "twitter": "^1.7.1",
+    "uuid": "^8.3.2"
+  },
+  "name": "server-mashup",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
